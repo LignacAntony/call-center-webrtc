@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call Center</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div id="loginScreen" class="login">
+            <h2>Call Center</h2>
+            <input type="text" id="username" placeholder="Nom d'utilisateur">
+            <br>
+            <button class="btn-primary" onclick="connect()">Se connecter</button>
+            <div id="errorMsg" class="error hidden"></div>
+        </div>
+
+        <div id="mainScreen" class="main hidden">
+            <div class="sidebar">
+                <div>
+                    <h3 id="currentUser"></h3>
+                    <button class="btn-danger" onclick="disconnect()">Déconnexion</button>
+                </div>
+                <hr>
+                <h4>Utilisateurs connectés</h4>
+                <div id="usersList"></div>
+            </div>
+            
+            <div class="video-area">
+                <div id="noCall" style="color: white; text-align: center; padding: 50px;">
+                    Cliquez sur un utilisateur pour appeler
+                </div>
+                <div id="videoContainer" class="hidden">
+                    <video id="remoteVideo" class="remote-video" autoplay></video>
+                    <video id="localVideo" class="local-video" autoplay muted></video>
+                    <div class="controls">
+                        <button class="btn-danger" onclick="hangUp()">Raccrocher</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="incomingCall" class="incoming-call hidden">
+        <h3>Appel entrant</h3>
+        <p><strong id="callerName"></strong> vous appelle</p>
+        <button class="btn-success" onclick="acceptCall()">Accepter</button>
+        <button class="btn-danger" onclick="rejectCall()">Refuser</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
